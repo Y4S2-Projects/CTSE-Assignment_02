@@ -1,0 +1,9 @@
+crewai
+langchain
+langchain-ollama
+langchain-core
+langgraph
+ollama
+jupyter
+pytest
+streamlit

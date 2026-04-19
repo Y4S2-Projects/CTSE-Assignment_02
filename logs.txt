@@ -1,0 +1,115 @@
+[2026-04-19 18:12:47] [System]: --- Starting pipeline for question: 'Explain machine learning' ---
+[2026-04-19 18:12:47] [Coordinator]: Received question: Explain machine learning
+[2026-04-19 18:12:47] [Coordinator]: Generating plan...
+[2026-04-19 18:12:47] [Coordinator]: Error connecting to Ollama: model 'llama3' not found (status code: 404)
+[2026-04-19 18:12:47] [Coordinator]: Plan generated:
+Step 1: Research 'Explain machine learning'. Step 2: Write Introduction and Explanation. Step 3: Write Conclusion.
+[2026-04-19 18:12:47] [Researcher]: Starting research based on the plan.
+[2026-04-19 18:12:47] [Researcher]: Research completed. Found data.
+[2026-04-19 18:12:47] [Writer]: Starting draft generation based on research.
+[2026-04-19 18:12:47] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-19 18:12:47] [Writer]: Draft generation completed.
+[2026-04-19 18:12:47] [Evaluator]: Starting evaluation of the draft.
+[2026-04-19 18:12:47] [Evaluator]: Evaluation completed: Score=100, Status=Passed
+[2026-04-19 18:12:47] [System]: --- Pipeline execution finished ---
+[2026-04-19 18:12:47] [System (LangGraph)]: --- Starting LangGraph pipeline for question: 'Explain machine learning' ---
+[2026-04-19 18:12:47] [Coordinator]: Received question: Explain machine learning
+[2026-04-19 18:12:48] [Coordinator]: Generating plan...
+[2026-04-19 18:12:48] [Coordinator]: Error connecting to Ollama: model 'llama3' not found (status code: 404)
+[2026-04-19 18:12:48] [Coordinator]: Plan generated:
+Step 1: Research 'Explain machine learning'. Step 2: Write Introduction and Explanation. Step 3: Write Conclusion.
+[2026-04-19 18:12:48] [Researcher]: Starting research based on the plan.
+[2026-04-19 18:12:48] [Researcher]: Research completed. Found data.
+[2026-04-19 18:12:48] [Writer]: Starting draft generation based on research.
+[2026-04-19 18:12:48] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-19 18:12:48] [Writer]: Draft generation completed.
+[2026-04-19 18:12:48] [Evaluator]: Starting evaluation of the draft.
+[2026-04-19 18:12:48] [Evaluator]: Evaluation completed: Score=100, Status=Passed
+[2026-04-19 18:12:48] [System (LangGraph)]: --- LangGraph Pipeline execution finished ---
+[2026-04-19 18:13:23] [System]: --- Starting pipeline for question: 'Explain Machine Learning' ---
+[2026-04-19 18:13:23] [Coordinator]: Received question: Explain Machine Learning
+[2026-04-19 18:13:23] [Coordinator]: Generating plan...
+[2026-04-19 18:13:23] [Coordinator]: Error connecting to Ollama: model 'llama3' not found (status code: 404)
+[2026-04-19 18:13:23] [Coordinator]: Plan generated:
+Step 1: Research 'Explain Machine Learning'. Step 2: Write Introduction and Explanation. Step 3: Write Conclusion.
+[2026-04-19 18:13:23] [Researcher]: Starting research based on the plan.
+[2026-04-19 18:13:23] [Researcher]: Research completed. Found data.
+[2026-04-19 18:13:23] [Writer]: Starting draft generation based on research.
+[2026-04-19 18:13:23] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-19 18:13:23] [Writer]: Draft generation completed.
+[2026-04-19 18:13:23] [Evaluator]: Starting evaluation of the draft.
+[2026-04-19 18:13:23] [Evaluator]: Evaluation completed: Score=100, Status=Passed
+[2026-04-19 18:13:23] [System]: --- Pipeline execution finished ---
+[2026-04-19 18:16:20] [System]: --- Starting pipeline for question: 'Explain machine learning' ---
+[2026-04-19 18:16:20] [Coordinator]: Received question: Explain machine learning
+[2026-04-19 18:16:20] [Coordinator]: Generating plan...
+[2026-04-19 18:16:20] [Coordinator]: Error connecting to Ollama: model 'llama3' not found (status code: 404)
+[2026-04-19 18:16:20] [Coordinator]: Plan generated:
+Step 1: Research 'Explain machine learning'. Step 2: Write Introduction and Explanation. Step 3: Write Conclusion.
+[2026-04-19 18:16:20] [Researcher]: Starting research based on the plan.
+[2026-04-19 18:16:20] [Researcher]: Research completed. Found data.
+[2026-04-19 18:16:20] [Writer]: Starting draft generation based on research.
+[2026-04-19 18:16:20] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-19 18:16:20] [Writer]: Draft generation completed.
+[2026-04-19 18:16:20] [Evaluator]: Starting evaluation of the draft.
+[2026-04-19 18:16:20] [Evaluator]: Evaluation completed: Score=100, Status=Passed
+[2026-04-19 18:16:20] [System]: --- Pipeline execution finished ---
+[2026-04-19 18:16:35] [System (LangGraph)]: --- Starting LangGraph pipeline for question: 'Explain machine learning' ---
+[2026-04-19 18:16:35] [Coordinator]: Received question: Explain machine learning
+[2026-04-19 18:16:35] [Coordinator]: Generating plan...
+[2026-04-19 18:16:35] [Coordinator]: Error connecting to Ollama: model 'llama3' not found (status code: 404)
+[2026-04-19 18:16:35] [Coordinator]: Plan generated:
+Step 1: Research 'Explain machine learning'. Step 2: Write Introduction and Explanation. Step 3: Write Conclusion.
+[2026-04-19 18:16:35] [Researcher]: Starting research based on the plan.
+[2026-04-19 18:16:35] [Researcher]: Research completed. Found data.
+[2026-04-19 18:16:35] [Writer]: Starting draft generation based on research.
+[2026-04-19 18:16:36] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-19 18:16:36] [Writer]: Draft generation completed.
+[2026-04-19 18:16:36] [Evaluator]: Starting evaluation of the draft.
+[2026-04-19 18:16:36] [Evaluator]: Evaluation completed: Score=100, Status=Passed
+[2026-04-19 18:16:36] [System (LangGraph)]: --- LangGraph Pipeline execution finished ---
+[2026-04-19 18:16:44] [System]: --- Starting pipeline for question: 'Explain Machine Learning' ---
+[2026-04-19 18:16:44] [Coordinator]: Received question: Explain Machine Learning
+[2026-04-19 18:16:44] [Coordinator]: Generating plan...
+[2026-04-19 18:16:44] [Coordinator]: Error connecting to Ollama: model 'llama3' not found (status code: 404)
+[2026-04-19 18:16:44] [Coordinator]: Plan generated:
+Step 1: Research 'Explain Machine Learning'. Step 2: Write Introduction and Explanation. Step 3: Write Conclusion.
+[2026-04-19 18:16:44] [Researcher]: Starting research based on the plan.
+[2026-04-19 18:16:44] [Researcher]: Research completed. Found data.
+[2026-04-19 18:16:44] [Writer]: Starting draft generation based on research.
+[2026-04-19 18:16:44] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-19 18:16:44] [Writer]: Draft generation completed.
+[2026-04-19 18:16:44] [Evaluator]: Starting evaluation of the draft.
+[2026-04-19 18:16:44] [Evaluator]: Evaluation completed: Score=100, Status=Passed
+[2026-04-19 18:16:44] [System]: --- Pipeline execution finished ---
+[2026-04-19 18:24:57] [System]: --- Starting pipeline for question: 'Explain Reinforcement Learning
+' ---
+[2026-04-19 18:24:57] [Coordinator]: Received question: Explain Reinforcement Learning
+
+[2026-04-19 18:24:57] [Coordinator]: Generating plan...
+[2026-04-19 18:24:57] [Coordinator]: Error connecting to Ollama: model 'llama3' not found (status code: 404)
+[2026-04-19 18:24:57] [Coordinator]: Plan generated:
+Step 1: Research 'Explain Reinforcement Learning
+'. Step 2: Write Introduction and Explanation. Step 3: Write Conclusion.
+[2026-04-19 18:24:57] [Researcher]: Starting research based on the plan.
+[2026-04-19 18:24:57] [Researcher]: Research completed. Found data.
+[2026-04-19 18:24:57] [Writer]: Starting draft generation based on research.
+[2026-04-19 18:24:57] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-19 18:24:57] [Writer]: Draft generation completed.
+[2026-04-19 18:24:57] [Evaluator]: Starting evaluation of the draft.
+[2026-04-19 18:24:57] [Evaluator]: Evaluation completed: Score=100, Status=Passed
+[2026-04-19 18:24:57] [System]: --- Pipeline execution finished ---
+[2026-04-19 23:23:50] [System]: --- Starting pipeline for question: 'I want to develop nodejs based system. how to do this' ---
+[2026-04-19 23:23:50] [Coordinator]: Received question: I want to develop nodejs based system. how to do this
+[2026-04-19 23:23:50] [Coordinator]: Generating plan...
+[2026-04-19 23:23:50] [Coordinator]: Error connecting to Ollama: model 'llama3' not found (status code: 404)
+[2026-04-19 23:23:50] [Coordinator]: Plan generated:
+Step 1: Research 'I want to develop nodejs based system. how to do this'. Step 2: Write Introduction and Explanation. Step 3: Write Conclusion.
+[2026-04-19 23:23:50] [Researcher]: Starting research based on the plan.
+[2026-04-19 23:23:50] [Researcher]: Research completed. Found data.
+[2026-04-19 23:23:50] [Writer]: Starting draft generation based on research.
+[2026-04-19 23:23:50] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-19 23:23:50] [Writer]: Draft generation completed.
+[2026-04-19 23:23:50] [Evaluator]: Starting evaluation of the draft.
+[2026-04-19 23:23:50] [Evaluator]: Evaluation completed: Score=100, Status=Passed
+[2026-04-19 23:23:50] [System]: --- Pipeline execution finished ---
