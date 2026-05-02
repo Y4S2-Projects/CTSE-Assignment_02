@@ -113,3 +113,235 @@ Step 1: Research 'I want to develop nodejs based system. how to do this'. Step 2
 [2026-04-19 23:23:50] [Evaluator]: Starting evaluation of the draft.
 [2026-04-19 23:23:50] [Evaluator]: Evaluation completed: Score=100, Status=Passed
 [2026-04-19 23:23:50] [System]: --- Pipeline execution finished ---
+[2026-04-20 00:26:15] [System]: --- Starting pipeline for question: 'I want to build a system using MERN stack. this should be POS system. how to build this
+' ---
+[2026-04-20 00:26:15] [Coordinator]: Received question: I want to build a system using MERN stack. this should be POS system. how to build this
+
+[2026-04-20 00:26:15] [Coordinator]: Generating plan...
+[2026-04-20 00:26:15] [Coordinator]: Error connecting to Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:26:15] [Coordinator]: Plan generated:
+Step 1: Research 'I want to build a system using MERN stack. this should be POS system. how to build this
+'. Step 2: Write Introduction and Explanation. Step 3: Write Conclusion.
+[2026-04-20 00:26:15] [Researcher]: Starting research generation with LLM.
+[2026-04-20 00:26:15] [Researcher]: Error generating research with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:26:15] [Researcher]: Research completed successfully.
+[2026-04-20 00:26:15] [System]: --- Iteration 1 of Writer/Evaluator Loop ---
+[2026-04-20 00:26:15] [Writer]: Starting draft generation based on research.
+[2026-04-20 00:26:15] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:26:15] [Writer]: Draft generation completed.
+[2026-04-20 00:26:15] [Evaluator]: Starting evaluation of the draft.
+[2026-04-20 00:26:15] [Evaluator]: Evaluation completed: Status=Improve
+[2026-04-20 00:26:15] [Evaluator]: Feedback: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:26:15] [System]: Draft evaluated as 'Improve'. Providing feedback to writer: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:26:15] [System]: --- Iteration 2 of Writer/Evaluator Loop ---
+[2026-04-20 00:26:15] [Writer]: Refining draft based on feedback: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:26:15] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:26:15] [Writer]: Draft generation completed.
+[2026-04-20 00:26:15] [Evaluator]: Starting evaluation of the draft.
+[2026-04-20 00:26:15] [Evaluator]: Evaluation completed: Status=Improve
+[2026-04-20 00:26:15] [Evaluator]: Feedback: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:26:15] [System]: Draft evaluated as 'Improve'. Providing feedback to writer: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:26:15] [System]: --- Pipeline execution finished ---
+[2026-04-20 00:27:42] [System]: --- Starting pipeline for question: '
+Explain Reinforcement Learning in detail. Include its working mechanism, key components (agent, environment, reward), real-world applications, advantages, and limitations.' ---
+[2026-04-20 00:27:42] [Coordinator]: Received question: 
+Explain Reinforcement Learning in detail. Include its working mechanism, key components (agent, environment, reward), real-world applications, advantages, and limitations.
+[2026-04-20 00:27:42] [Coordinator]: Generating plan...
+[2026-04-20 00:27:42] [Coordinator]: Error connecting to Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:27:42] [Coordinator]: Plan generated:
+Step 1: Research '
+Explain Reinforcement Learning in detail. Include its working mechanism, key components (agent, environment, reward), real-world applications, advantages, and limitations.'. Step 2: Write Introduction and Explanation. Step 3: Write Conclusion.
+[2026-04-20 00:27:42] [Researcher]: Starting research generation with LLM.
+[2026-04-20 00:27:42] [Researcher]: Error generating research with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:27:42] [Researcher]: Research completed successfully.
+[2026-04-20 00:27:42] [System]: --- Iteration 1 of Writer/Evaluator Loop ---
+[2026-04-20 00:27:42] [Writer]: Starting draft generation based on research.
+[2026-04-20 00:27:43] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:27:43] [Writer]: Draft generation completed.
+[2026-04-20 00:27:43] [Evaluator]: Starting evaluation of the draft.
+[2026-04-20 00:27:43] [Evaluator]: Evaluation completed: Status=Improve
+[2026-04-20 00:27:43] [Evaluator]: Feedback: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:27:43] [System]: Draft evaluated as 'Improve'. Providing feedback to writer: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:27:43] [System]: --- Iteration 2 of Writer/Evaluator Loop ---
+[2026-04-20 00:27:43] [Writer]: Refining draft based on feedback: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:27:43] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:27:43] [Writer]: Draft generation completed.
+[2026-04-20 00:27:43] [Evaluator]: Starting evaluation of the draft.
+[2026-04-20 00:27:43] [Evaluator]: Evaluation completed: Status=Improve
+[2026-04-20 00:27:43] [Evaluator]: Feedback: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:27:43] [System]: Draft evaluated as 'Improve'. Providing feedback to writer: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:27:43] [System]: --- Pipeline execution finished ---
+[2026-04-20 00:29:00] [System]: --- Starting pipeline for question: '
+Explain Reinforcement Learning in detail. Include its working mechanism, key components (agent, environment, reward), real-world applications, advantages, and limitations.' ---
+[2026-04-20 00:29:00] [Coordinator]: Received question: 
+Explain Reinforcement Learning in detail. Include its working mechanism, key components (agent, environment, reward), real-world applications, advantages, and limitations.
+[2026-04-20 00:29:00] [Coordinator]: Generating plan...
+[2026-04-20 00:29:00] [Coordinator]: Error connecting to Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:29:00] [Coordinator]: Plan generated:
+Step 1: Research '
+Explain Reinforcement Learning in detail. Include its working mechanism, key components (agent, environment, reward), real-world applications, advantages, and limitations.'. Step 2: Write Introduction and Explanation. Step 3: Write Conclusion.
+[2026-04-20 00:29:00] [Researcher]: Starting research generation with LLM.
+[2026-04-20 00:29:00] [Researcher]: Error generating research with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:29:00] [Researcher]: Research completed successfully.
+[2026-04-20 00:29:00] [System]: --- Iteration 1 of Writer/Evaluator Loop ---
+[2026-04-20 00:29:00] [Writer]: Starting draft generation based on research.
+[2026-04-20 00:29:00] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:29:00] [Writer]: Draft generation completed.
+[2026-04-20 00:29:00] [Evaluator]: Starting evaluation of the draft.
+[2026-04-20 00:29:00] [Evaluator]: Evaluation completed: Status=Improve
+[2026-04-20 00:29:00] [Evaluator]: Feedback: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:29:00] [System]: Draft evaluated as 'Improve'. Providing feedback to writer: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:29:00] [System]: --- Iteration 2 of Writer/Evaluator Loop ---
+[2026-04-20 00:29:00] [Writer]: Refining draft based on feedback: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:29:00] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:29:00] [Writer]: Draft generation completed.
+[2026-04-20 00:29:00] [Evaluator]: Starting evaluation of the draft.
+[2026-04-20 00:29:00] [Evaluator]: Evaluation completed: Status=Improve
+[2026-04-20 00:29:00] [Evaluator]: Feedback: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:29:00] [System]: Draft evaluated as 'Improve'. Providing feedback to writer: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:29:00] [System]: --- Pipeline execution finished ---
+[2026-04-20 00:29:05] [System]: --- Starting pipeline for question: '
+Explain Reinforcement Learning in detail. Include its working mechanism, key components (agent, environment, reward), real-world applications, advantages, and limitations.' ---
+[2026-04-20 00:29:05] [Coordinator]: Received question: 
+Explain Reinforcement Learning in detail. Include its working mechanism, key components (agent, environment, reward), real-world applications, advantages, and limitations.
+[2026-04-20 00:29:06] [Coordinator]: Generating plan...
+[2026-04-20 00:29:06] [Coordinator]: Error connecting to Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:29:06] [Coordinator]: Plan generated:
+Step 1: Research '
+Explain Reinforcement Learning in detail. Include its working mechanism, key components (agent, environment, reward), real-world applications, advantages, and limitations.'. Step 2: Write Introduction and Explanation. Step 3: Write Conclusion.
+[2026-04-20 00:29:06] [Researcher]: Starting research generation with LLM.
+[2026-04-20 00:29:06] [Researcher]: Error generating research with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:29:06] [Researcher]: Research completed successfully.
+[2026-04-20 00:29:06] [System]: --- Iteration 1 of Writer/Evaluator Loop ---
+[2026-04-20 00:29:06] [Writer]: Starting draft generation based on research.
+[2026-04-20 00:29:06] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:29:06] [Writer]: Draft generation completed.
+[2026-04-20 00:29:06] [Evaluator]: Starting evaluation of the draft.
+[2026-04-20 00:29:06] [Evaluator]: Evaluation completed: Status=Improve
+[2026-04-20 00:29:06] [Evaluator]: Feedback: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:29:06] [System]: Draft evaluated as 'Improve'. Providing feedback to writer: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:29:06] [System]: --- Iteration 2 of Writer/Evaluator Loop ---
+[2026-04-20 00:29:06] [Writer]: Refining draft based on feedback: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:29:06] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:29:06] [Writer]: Draft generation completed.
+[2026-04-20 00:29:06] [Evaluator]: Starting evaluation of the draft.
+[2026-04-20 00:29:06] [Evaluator]: Evaluation completed: Status=Improve
+[2026-04-20 00:29:06] [Evaluator]: Feedback: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:29:06] [System]: Draft evaluated as 'Improve'. Providing feedback to writer: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:29:06] [System]: --- Pipeline execution finished ---
+[2026-04-20 00:29:18] [System]: --- Starting pipeline for question: '
+Explain Reinforcement Learning in detail. Include its working mechanism, key components (agent, environment, reward), real-world applications, advantages, and limitations.' ---
+[2026-04-20 00:29:18] [Coordinator]: Received question: 
+Explain Reinforcement Learning in detail. Include its working mechanism, key components (agent, environment, reward), real-world applications, advantages, and limitations.
+[2026-04-20 00:29:18] [Coordinator]: Generating plan...
+[2026-04-20 00:29:18] [Coordinator]: Error connecting to Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:29:18] [Coordinator]: Plan generated:
+Step 1: Research '
+Explain Reinforcement Learning in detail. Include its working mechanism, key components (agent, environment, reward), real-world applications, advantages, and limitations.'. Step 2: Write Introduction and Explanation. Step 3: Write Conclusion.
+[2026-04-20 00:29:18] [Researcher]: Starting research generation with LLM.
+[2026-04-20 00:29:18] [Researcher]: Error generating research with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:29:18] [Researcher]: Research completed successfully.
+[2026-04-20 00:29:18] [System]: --- Iteration 1 of Writer/Evaluator Loop ---
+[2026-04-20 00:29:18] [Writer]: Starting draft generation based on research.
+[2026-04-20 00:29:18] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:29:18] [Writer]: Draft generation completed.
+[2026-04-20 00:29:19] [Evaluator]: Starting evaluation of the draft.
+[2026-04-20 00:29:19] [Evaluator]: Evaluation completed: Status=Improve
+[2026-04-20 00:29:19] [Evaluator]: Feedback: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:29:19] [System]: Draft evaluated as 'Improve'. Providing feedback to writer: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:29:19] [System]: --- Iteration 2 of Writer/Evaluator Loop ---
+[2026-04-20 00:29:19] [Writer]: Refining draft based on feedback: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:29:19] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-20 00:29:19] [Writer]: Draft generation completed.
+[2026-04-20 00:29:19] [Evaluator]: Starting evaluation of the draft.
+[2026-04-20 00:29:19] [Evaluator]: Evaluation completed: Status=Improve
+[2026-04-20 00:29:19] [Evaluator]: Feedback: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:29:19] [System]: Draft evaluated as 'Improve'. Providing feedback to writer: Length is too short (126 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-20 00:29:19] [System]: --- Pipeline execution finished ---
+[2026-04-27 18:05:16] [System]: --- Starting pipeline for question: 'Networking subnetting
+' ---
+[2026-04-27 18:05:16] [Coordinator]: Received question: Networking subnetting
+
+[2026-04-27 18:05:16] [Coordinator]: Generating plan...
+[2026-04-27 18:05:16] [Coordinator]: Error connecting to Ollama: model 'llama3' not found (status code: 404)
+[2026-04-27 18:05:16] [Coordinator]: Plan generated:
+Step 1: Research 'Networking subnetting
+'. Step 2: Write Introduction and Explanation. Step 3: Write Conclusion.
+[2026-04-27 18:05:16] [Researcher]: Starting research generation with LLM.
+[2026-04-27 18:05:16] [Researcher]: Error generating research with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-27 18:05:16] [Researcher]: Research completed successfully.
+[2026-04-27 18:05:16] [System]: --- Iteration 1 of Writer/Evaluator Loop ---
+[2026-04-27 18:05:16] [Writer]: Starting draft generation based on research.
+[2026-04-27 18:05:16] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-27 18:05:16] [Writer]: Draft generation completed.
+[2026-04-27 18:05:16] [Evaluator]: Starting evaluation of the draft.
+[2026-04-27 18:05:16] [Evaluator]: Evaluation completed: Status=Improve
+[2026-04-27 18:05:16] [Evaluator]: Feedback: Length is too short (46 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-27 18:05:16] [System]: Draft evaluated as 'Improve'. Providing feedback to writer: Length is too short (46 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-27 18:05:16] [System]: --- Iteration 2 of Writer/Evaluator Loop ---
+[2026-04-27 18:05:16] [Writer]: Refining draft based on feedback: Length is too short (46 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-27 18:05:16] [Writer]: Error generating draft with Ollama: model 'llama3' not found (status code: 404)
+[2026-04-27 18:05:16] [Writer]: Draft generation completed.
+[2026-04-27 18:05:16] [Evaluator]: Starting evaluation of the draft.
+[2026-04-27 18:05:16] [Evaluator]: Evaluation completed: Status=Improve
+[2026-04-27 18:05:16] [Evaluator]: Feedback: Length is too short (46 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-27 18:05:16] [System]: Draft evaluated as 'Improve'. Providing feedback to writer: Length is too short (46 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-04-27 18:05:16] [System]: --- Pipeline execution finished ---
+[2026-05-01 20:51:56] [System]: --- Starting pipeline for question: 'python project
+' ---
+[2026-05-01 20:51:56] [Coordinator]: Received question: python project
+
+[2026-05-01 20:51:56] [Coordinator]: Generating plan...
+[2026-05-01 20:51:56] [Coordinator]: Error connecting to Ollama: [Errno 61] Connection refused
+[2026-05-01 20:51:56] [Coordinator]: Plan generated:
+Step 1: Research 'python project
+'. Step 2: Write Introduction and Explanation. Step 3: Write Conclusion.
+[2026-05-01 20:51:56] [Researcher]: Starting research generation with LLM.
+[2026-05-01 20:51:56] [Researcher]: Error generating research with Ollama: [Errno 61] Connection refused
+[2026-05-01 20:51:56] [Researcher]: Research completed successfully.
+[2026-05-01 20:51:56] [System]: --- Iteration 1 of Writer/Evaluator Loop ---
+[2026-05-01 20:51:56] [Writer]: Starting draft generation based on research.
+[2026-05-01 20:51:56] [Writer]: Error generating draft with Ollama: [Errno 61] Connection refused
+[2026-05-01 20:51:56] [Writer]: Draft generation completed.
+[2026-05-01 20:51:56] [Evaluator]: Starting evaluation of the draft.
+[2026-05-01 20:51:56] [Evaluator]: Evaluation completed: Status=Improve
+[2026-05-01 20:51:56] [Evaluator]: Feedback: Length is too short (46 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-05-01 20:51:56] [System]: Draft evaluated as 'Improve'. Providing feedback to writer: Length is too short (46 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-05-01 20:51:56] [System]: --- Iteration 2 of Writer/Evaluator Loop ---
+[2026-05-01 20:51:56] [Writer]: Refining draft based on feedback: Length is too short (46 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-05-01 20:51:56] [Writer]: Error generating draft with Ollama: [Errno 61] Connection refused
+[2026-05-01 20:51:56] [Writer]: Draft generation completed.
+[2026-05-01 20:51:56] [Evaluator]: Starting evaluation of the draft.
+[2026-05-01 20:51:56] [Evaluator]: Evaluation completed: Status=Improve
+[2026-05-01 20:51:56] [Evaluator]: Feedback: Length is too short (46 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-05-01 20:51:56] [System]: Draft evaluated as 'Improve'. Providing feedback to writer: Length is too short (46 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-05-01 20:51:56] [System]: --- Pipeline execution finished ---
+[2026-05-02 16:54:36] [System]: --- Starting pipeline for question: 'how to do mern project
+' ---
+[2026-05-02 16:54:36] [Coordinator]: Received question: how to do mern project
+
+[2026-05-02 16:54:37] [Coordinator]: Generating plan...
+[2026-05-02 16:54:37] [Coordinator]: Error connecting to Ollama: [Errno 61] Connection refused
+[2026-05-02 16:54:37] [Coordinator]: Plan generated:
+Step 1: Research 'how to do mern project
+'. Step 2: Write Introduction and Explanation. Step 3: Write Conclusion.
+[2026-05-02 16:54:37] [Researcher]: Starting research generation with LLM.
+[2026-05-02 16:54:37] [Researcher]: Error generating research with Ollama: [Errno 61] Connection refused
+[2026-05-02 16:54:37] [Researcher]: Research completed successfully.
+[2026-05-02 16:54:37] [System]: --- Iteration 1 of Writer/Evaluator Loop ---
+[2026-05-02 16:54:37] [Writer]: Starting draft generation based on research.
+[2026-05-02 16:54:37] [Writer]: Error generating draft with Ollama: [Errno 61] Connection refused
+[2026-05-02 16:54:37] [Writer]: Draft generation completed.
+[2026-05-02 16:54:37] [Evaluator]: Starting evaluation of the draft.
+[2026-05-02 16:54:37] [Evaluator]: Evaluation completed: Status=Improve
+[2026-05-02 16:54:37] [Evaluator]: Feedback: Length is too short (61 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-05-02 16:54:37] [System]: Draft evaluated as 'Improve'. Providing feedback to writer: Length is too short (61 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-05-02 16:54:37] [System]: --- Iteration 2 of Writer/Evaluator Loop ---
+[2026-05-02 16:54:37] [Writer]: Refining draft based on feedback: Length is too short (61 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-05-02 16:54:37] [Writer]: Error generating draft with Ollama: [Errno 61] Connection refused
+[2026-05-02 16:54:37] [Writer]: Draft generation completed.
+[2026-05-02 16:54:37] [Evaluator]: Starting evaluation of the draft.
+[2026-05-02 16:54:37] [Evaluator]: Evaluation completed: Status=Improve
+[2026-05-02 16:54:37] [Evaluator]: Feedback: Length is too short (61 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-05-02 16:54:37] [System]: Draft evaluated as 'Improve'. Providing feedback to writer: Length is too short (61 words). Please expand to at least 300 words. Ensure better clarity and depth.
+[2026-05-02 16:54:37] [System]: --- Pipeline execution finished ---

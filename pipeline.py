@@ -6,7 +6,7 @@ from agents.writer import writer_agent
 from agents.evaluator import evaluator_agent
 
 def run_system(question: str) -> tuple[str, dict, dict]:
-    """Runs the multi-agent system pipeline sequentially.
+    """Runs the multi-agent system pipeline sequentially with an iterative refinement loop.
     
     Args:
         question (str): The question to answer.
@@ -16,11 +16,26 @@ def run_system(question: str) -> tuple[str, dict, dict]:
     """
     log("System", f"--- Starting pipeline for question: '{question}' ---")
     
-    # Run pipeline
+    # Run initial pipeline phases
     coordinator_agent(question)
     researcher_agent()
-    final_answer = writer_agent()
-    evaluation = evaluator_agent()
+    
+    # Iterative Improvement Loop
+    MAX_ITERATIONS = 2
+    feedback = ""
+    
+    for i in range(MAX_ITERATIONS):
+        log("System", f"--- Iteration {i+1} of Writer/Evaluator Loop ---")
+        
+        final_answer = writer_agent(feedback)
+        evaluation = evaluator_agent()
+        
+        if evaluation.get("status") == "Good":
+            log("System", "Draft evaluated as 'Good'. Exiting refinement loop.")
+            break
+        else:
+            feedback = evaluation.get("feedback", "Improve the previous answer.")
+            log("System", f"Draft evaluated as 'Improve'. Providing feedback to writer: {feedback}")
     
     log("System", "--- Pipeline execution finished ---")
     
