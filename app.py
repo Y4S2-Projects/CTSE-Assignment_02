@@ -1,6 +1,8 @@
 import html
 import os
+import re
 import sys
+import textwrap
 import time
 
 import streamlit as st
@@ -44,16 +46,68 @@ AGENT_STEPS = [
 ]
 
 
-def inject_styles() -> None:
-    st.markdown(
-        """
+def inject_styles(theme_mode: str = "Light") -> None:
+    if theme_mode == "Dark":
+        palette = {
+            "app_bg": "linear-gradient(135deg, #08111f 0%, #101827 46%, #171225 100%)",
+            "ink": "#f8fafc",
+            "muted": "#cbd5e1",
+            "line": "#334155",
+            "panel": "#111827",
+            "panel_soft": "#172033",
+            "soft": "#1f2937",
+            "input": "#0f172a",
+            "shadow": "0 24px 70px rgba(0, 0, 0, 0.32)",
+            "sidebar": "#050b14",
+            "success_bg": "#052e1a",
+            "success_line": "#166534",
+            "success_text": "#dcfce7",
+            "success_muted": "#86efac",
+            "button_bg": "#38bdf8",
+            "button_text": "#07111f",
+            "button_hover": "#7dd3fc",
+        }
+    else:
+        palette = {
+            "app_bg": "linear-gradient(135deg, #f8fafc 0%, #eef6f4 42%, #f7f3ff 100%)",
+            "ink": "#0f172a",
+            "muted": "#64748b",
+            "line": "#dbe3ee",
+            "panel": "#ffffff",
+            "panel_soft": "#f8fafc",
+            "soft": "#f8fafc",
+            "input": "#ffffff",
+            "shadow": "0 24px 70px rgba(15, 23, 42, 0.10)",
+            "sidebar": "#0f172a",
+            "success_bg": "#ecfdf5",
+            "success_line": "#bbf7d0",
+            "success_text": "#065f46",
+            "success_muted": "#047857",
+            "button_bg": "#2563eb",
+            "button_text": "#ffffff",
+            "button_hover": "#1d4ed8",
+        }
+
+    css = """
         <style>
             :root {
-                --ink: #0f172a;
-                --muted: #64748b;
-                --line: #dbe3ee;
-                --panel: #ffffff;
-                --soft: #f8fafc;
+                --ink: __INK__;
+                --muted: __MUTED__;
+                --line: __LINE__;
+                --panel: __PANEL__;
+                --panel-soft: __PANEL_SOFT__;
+                --soft: __SOFT__;
+                --input: __INPUT__;
+                --app-bg: __APP_BG__;
+                --shadow: __SHADOW__;
+                --sidebar-bg: __SIDEBAR__;
+                --success-bg: __SUCCESS_BG__;
+                --success-line: __SUCCESS_LINE__;
+                --success-text: __SUCCESS_TEXT__;
+                --success-muted: __SUCCESS_MUTED__;
+                --button-bg: __BUTTON_BG__;
+                --button-text: __BUTTON_TEXT__;
+                --button-hover: __BUTTON_HOVER__;
                 --blue: #2563eb;
                 --teal: #0f766e;
                 --amber: #b45309;
@@ -63,9 +117,21 @@ def inject_styles() -> None:
             }
 
             .stApp {
-                background:
-                    radial-gradient(circle at top left, rgba(37, 99, 235, 0.12), transparent 32rem),
-                    linear-gradient(135deg, #f8fafc 0%, #eef6f4 42%, #f7f3ff 100%);
+                background: var(--app-bg);
+                color: var(--ink);
+            }
+
+            .stApp,
+            .stApp p,
+            .stApp span,
+            .stApp label,
+            .stApp div,
+            .stApp h1,
+            .stApp h2,
+            .stApp h3,
+            .stApp h4,
+            .stApp h5,
+            .stApp h6 {
                 color: var(--ink);
             }
 
@@ -76,7 +142,7 @@ def inject_styles() -> None:
             }
 
             [data-testid="stSidebar"] {
-                background: #0f172a;
+                background: var(--sidebar-bg);
             }
 
             [data-testid="stSidebar"] * {
@@ -90,11 +156,11 @@ def inject_styles() -> None:
 
             .hero-shell {
                 border: 1px solid rgba(15, 23, 42, 0.08);
-                background: rgba(255, 255, 255, 0.82);
+                background: color-mix(in srgb, var(--panel) 88%, transparent);
                 backdrop-filter: blur(18px);
                 border-radius: 20px;
                 padding: 28px;
-                box-shadow: 0 24px 70px rgba(15, 23, 42, 0.10);
+                box-shadow: var(--shadow);
             }
 
             .hero-grid {
@@ -138,7 +204,7 @@ def inject_styles() -> None:
             }
 
             .metric {
-                background: var(--soft);
+                background: var(--panel-soft);
                 border: 1px solid var(--line);
                 border-radius: 14px;
                 padding: 14px;
@@ -239,10 +305,10 @@ def inject_styles() -> None:
             }
 
             .agent-card {
-                background: rgba(255,255,255,0.90);
+                background: var(--panel);
                 border: 1px solid var(--line);
                 border-radius: 16px;
-                box-shadow: 0 18px 40px rgba(15, 23, 42, 0.07);
+                box-shadow: var(--shadow);
                 min-height: 150px;
                 overflow: hidden;
                 padding: 16px;
@@ -323,7 +389,7 @@ def inject_styles() -> None:
             }
 
             .output-node {
-                background: rgba(255,255,255,0.92);
+                background: var(--panel);
                 border: 1px solid var(--line);
                 border-radius: 14px;
                 min-height: 142px;
@@ -347,10 +413,10 @@ def inject_styles() -> None:
 
             .success-banner {
                 align-items: center;
-                background: #ecfdf5;
-                border: 1px solid #bbf7d0;
+                background: var(--success-bg);
+                border: 1px solid var(--success-line);
                 border-radius: 16px;
-                color: #065f46;
+                color: var(--success-text);
                 display: flex;
                 font-weight: 800;
                 justify-content: space-between;
@@ -358,20 +424,130 @@ def inject_styles() -> None:
                 padding: 14px 16px;
             }
 
+            .success-banner div {
+                color: var(--success-text);
+            }
+
             .success-banner span {
-                color: #047857;
+                color: var(--success-muted);
                 font-size: 0.86rem;
                 font-weight: 700;
             }
 
             .stButton > button {
+                background: var(--button-bg);
+                border: 1px solid var(--button-bg);
                 border-radius: 12px;
+                color: var(--button-text);
                 font-weight: 800;
                 min-height: 3rem;
             }
 
-            textarea {
+            .stButton > button:hover {
+                background: var(--button-hover);
+                border-color: var(--button-hover);
+                color: var(--button-text);
+            }
+
+            .stDownloadButton > button {
+                background: var(--button-bg);
+                border: 1px solid var(--button-bg);
+                border-radius: 12px;
+                color: var(--button-text) !important;
+                font-weight: 850;
+                min-height: 3rem;
+            }
+
+            .stDownloadButton > button:hover,
+            .stDownloadButton > button:focus,
+            .stDownloadButton > button:active {
+                background: var(--button-hover);
+                border-color: var(--button-hover);
+                color: var(--button-text) !important;
+            }
+
+            .stDownloadButton > button * {
+                color: var(--button-text) !important;
+            }
+
+            textarea,
+            [data-baseweb="textarea"] textarea,
+            [data-baseweb="input"] input {
+                background: var(--input) !important;
+                border-color: var(--line) !important;
+                color: var(--ink) !important;
                 border-radius: 14px !important;
+            }
+
+            textarea::placeholder,
+            [data-baseweb="textarea"] textarea::placeholder {
+                color: var(--muted) !important;
+            }
+
+            [data-testid="stMetric"] {
+                background: var(--panel);
+                border: 1px solid var(--line);
+                border-radius: 14px;
+                padding: 14px;
+            }
+
+            [data-testid="stMetric"] label,
+            [data-testid="stMetric"] div,
+            [data-testid="stMetric"] [data-testid="stMetricValue"] {
+                color: var(--ink) !important;
+            }
+
+            [data-testid="stMetric"] label {
+                color: var(--muted) !important;
+            }
+
+            [data-testid="stExpander"] {
+                background: var(--panel);
+                border: 1px solid var(--line);
+                border-radius: 14px;
+                overflow: hidden;
+            }
+
+            [data-testid="stExpander"] details,
+            [data-testid="stExpander"] summary,
+            [data-testid="stExpander"] p,
+            [data-testid="stExpander"] div {
+                color: var(--ink) !important;
+            }
+
+            [data-baseweb="tab-list"] {
+                gap: 8px;
+            }
+
+            [data-baseweb="tab"] {
+                background: var(--panel-soft);
+                border: 1px solid var(--line);
+                border-radius: 10px;
+                color: var(--ink);
+            }
+
+            [data-baseweb="tab"] p,
+            [data-baseweb="tab"] span {
+                color: var(--ink) !important;
+            }
+
+            .download-report-panel {
+                background: var(--panel);
+                border: 1px solid var(--line);
+                border-radius: 16px;
+                box-shadow: var(--shadow);
+                margin: 1rem 0;
+                padding: 16px;
+            }
+
+            .download-report-panel,
+            .download-report-panel * {
+                color: var(--ink);
+            }
+
+            .download-report-panel p {
+                color: var(--muted);
+                margin: 0 0 12px;
             }
 
             @media (max-width: 980px) {
@@ -387,7 +563,31 @@ def inject_styles() -> None:
                 }
             }
         </style>
-        """,
+        """
+    replacements = {
+        "__INK__": palette["ink"],
+        "__MUTED__": palette["muted"],
+        "__LINE__": palette["line"],
+        "__PANEL__": palette["panel"],
+        "__PANEL_SOFT__": palette["panel_soft"],
+        "__SOFT__": palette["soft"],
+        "__INPUT__": palette["input"],
+        "__APP_BG__": palette["app_bg"],
+        "__SHADOW__": palette["shadow"],
+        "__SIDEBAR__": palette["sidebar"],
+        "__SUCCESS_BG__": palette["success_bg"],
+        "__SUCCESS_LINE__": palette["success_line"],
+        "__SUCCESS_TEXT__": palette["success_text"],
+        "__SUCCESS_MUTED__": palette["success_muted"],
+        "__BUTTON_BG__": palette["button_bg"],
+        "__BUTTON_TEXT__": palette["button_text"],
+        "__BUTTON_HOVER__": palette["button_hover"],
+    }
+    for token, value in replacements.items():
+        css = css.replace(token, value)
+
+    st.markdown(
+        css,
         unsafe_allow_html=True,
     )
 
@@ -405,42 +605,42 @@ def safe_preview(value, limit: int = 140) -> str:
 
 def render_hero() -> None:
     steps_html = "".join(
-        f"""
-        <div class="mini-flow-step">
-            <div class="mini-dot">{index}</div>
-            <div>
-                <strong>{step["name"]}</strong>
-                <span>{step["role"]}</span>
-            </div>
-        </div>
-        """
+        (
+            '<div class="mini-flow-step">'
+            f'<div class="mini-dot">{index}</div>'
+            "<div>"
+            f'<strong>{html.escape(step["name"])}</strong>'
+            f'<span>{html.escape(step["role"])}</span>'
+            "</div>"
+            "</div>"
+        )
         for index, step in enumerate(AGENT_STEPS, start=1)
     )
 
     st.markdown(
-        f"""
-        <div class="hero-shell">
-            <div class="hero-grid">
-                <div>
-                    <div class="eyebrow">Local multi-agent assignment studio</div>
-                    <h1 class="hero-title">Generate structured answers with a visible agent workflow.</h1>
-                    <p class="hero-copy">
-                        Enter an assignment topic and watch the system move from planning to research,
-                        drafting, evaluation, and final output in one clean workspace.
-                    </p>
-                    <div class="metric-row">
-                        <div class="metric"><strong>4</strong><span>Specialized agents</span></div>
-                        <div class="metric"><strong>2x</strong><span>Draft refinement loop</span></div>
-                        <div class="metric"><strong>Local</strong><span>Ollama-powered run</span></div>
-                    </div>
-                </div>
-                <div class="flow-panel">
-                    <h3>Agent route</h3>
-                    {steps_html}
-                </div>
-            </div>
-        </div>
-        """,
+        (
+            '<div class="hero-shell">'
+            '<div class="hero-grid">'
+            "<div>"
+            '<div class="eyebrow">Local multi-agent assignment studio</div>'
+            '<h1 class="hero-title">Generate structured answers with a visible agent workflow.</h1>'
+            '<p class="hero-copy">'
+            "Enter an assignment topic and watch the system move from planning to research, "
+            "drafting, evaluation, and final output in one clean workspace."
+            "</p>"
+            '<div class="metric-row">'
+            '<div class="metric"><strong>4</strong><span>Specialized agents</span></div>'
+            '<div class="metric"><strong>2x</strong><span>Draft refinement loop</span></div>'
+            '<div class="metric"><strong>Local</strong><span>Ollama-powered run</span></div>'
+            "</div>"
+            "</div>"
+            '<div class="flow-panel">'
+            "<h3>Agent route</h3>"
+            f"{steps_html}"
+            "</div>"
+            "</div>"
+            "</div>"
+        ),
         unsafe_allow_html=True,
     )
 
@@ -454,26 +654,23 @@ def render_agent_flow(mode: str = "ready") -> None:
     label, class_name = labels.get(mode, labels["ready"])
 
     cards = "".join(
-        f"""
-        <div class="agent-card" style="--accent:{step["accent"]};">
-            <div class="agent-head">
-                <div class="agent-index">{index}</div>
-                <div>
-                    <h4>{step["name"]}</h4>
-                    <p>{step["role"]}</p>
-                </div>
-            </div>
-            <span class="status-pill {class_name}">{label}</span>
-        </div>
-        """
+        (
+            f'<div class="agent-card" style="--accent:{step["accent"]};">'
+            '<div class="agent-head">'
+            f'<div class="agent-index">{index}</div>'
+            "<div>"
+            f'<h4>{html.escape(step["name"])}</h4>'
+            f'<p>{html.escape(step["role"])}</p>'
+            "</div>"
+            "</div>"
+            f'<span class="status-pill {class_name}">{label}</span>'
+            "</div>"
+        )
         for index, step in enumerate(AGENT_STEPS, start=1)
     )
 
     st.markdown(
-        f"""
-        <div class="section-label">Agent Flow</div>
-        <div class="agent-flow">{cards}</div>
-        """,
+        f'<div class="section-label">Agent Flow</div><div class="agent-flow">{cards}</div>',
         unsafe_allow_html=True,
     )
 
@@ -489,22 +686,174 @@ def render_output_flow(full_state: dict, final_answer: str) -> None:
     ]
 
     node_html = "".join(
-        f"""
-        <div class="output-node">
-            <strong>{html.escape(title)}</strong>
-            <span>{safe_preview(value)}</span>
-        </div>
-        """
+        (
+            '<div class="output-node">'
+            f"<strong>{html.escape(title)}</strong>"
+            f"<span>{safe_preview(value)}</span>"
+            "</div>"
+        )
         for title, value in nodes
     )
 
     st.markdown(
-        f"""
-        <div class="section-label">Final Output Flow</div>
-        <div class="output-flow">{node_html}</div>
-        """,
+        (
+            '<div class="section-label">Final Output Flow</div>'
+            f'<div class="output-flow">{node_html}</div>'
+        ),
         unsafe_allow_html=True,
     )
+
+
+def split_assignment_sections(answer: str) -> list[tuple[str, str]]:
+    sections = []
+    current_title = "Overview"
+    current_lines = []
+
+    for line in (answer or "").splitlines():
+        stripped = line.strip()
+        heading_match = re.match(r"^(#{1,3}\s*)?(Introduction|Explanation|Examples|Advantages / Use cases|Conclusion)\s*$", stripped, re.I)
+        if heading_match:
+            if current_lines:
+                sections.append((current_title, "\n".join(current_lines).strip()))
+            current_title = heading_match.group(2)
+            current_lines = []
+        elif stripped.startswith("# "):
+            if current_lines:
+                sections.append((current_title, "\n".join(current_lines).strip()))
+            current_title = stripped[2:].strip()
+            current_lines = []
+        else:
+            current_lines.append(line)
+
+    if current_lines:
+        sections.append((current_title, "\n".join(current_lines).strip()))
+
+    return [(title, body) for title, body in sections if body]
+
+
+def _escape_pdf_text(text: str) -> str:
+    return text.replace("\\", "\\\\").replace("(", "\\(").replace(")", "\\)")
+
+
+def create_assignment_pdf(title: str, answer: str, evaluation: dict) -> bytes:
+    clean_title = " ".join((title or "Generated Assignment").split())
+    clean_answer = re.sub(r"^#{1,6}\s*", "", answer or "", flags=re.MULTILINE)
+    status = evaluation.get("status", "Unknown") if isinstance(evaluation, dict) else "Unknown"
+    score = evaluation.get("score", "N/A") if isinstance(evaluation, dict) else "N/A"
+    word_count = evaluation.get("word_count", len(clean_answer.split())) if isinstance(evaluation, dict) else len(clean_answer.split())
+
+    lines = [
+        clean_title,
+        "",
+        f"Evaluation Status: {status}",
+        f"Score: {score}",
+        f"Word Count: {word_count}",
+        "",
+    ]
+    lines.extend(clean_answer.splitlines())
+
+    wrapped_lines = []
+    for line in lines:
+        if not line.strip():
+            wrapped_lines.append("")
+            continue
+        wrapped_lines.extend(textwrap.wrap(line, width=88) or [""])
+
+    lines_per_page = 44
+    pages = [
+        wrapped_lines[index:index + lines_per_page]
+        for index in range(0, len(wrapped_lines), lines_per_page)
+    ] or [["Generated Assignment"]]
+
+    objects = []
+    pages_object_number = 2
+    page_object_numbers = []
+
+    objects.append("<< /Type /Catalog /Pages 2 0 R >>")
+    objects.append("")
+
+    for page_index, page_lines in enumerate(pages):
+        page_obj_number = 3 + page_index * 2
+        content_obj_number = page_obj_number + 1
+        page_object_numbers.append(page_obj_number)
+
+        text_commands = ["BT", "/F1 11 Tf", "50 780 Td", "14 TL"]
+        for line_index, line in enumerate(page_lines):
+            if line_index:
+                text_commands.append("T*")
+            text_commands.append(f"({_escape_pdf_text(line)}) Tj")
+        text_commands.append("ET")
+        stream = "\n".join(text_commands)
+
+        objects.append(
+            f"<< /Type /Page /Parent {pages_object_number} 0 R /MediaBox [0 0 612 792] "
+            f"/Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> >> >> "
+            f"/Contents {content_obj_number} 0 R >>"
+        )
+        objects.append(f"<< /Length {len(stream.encode('latin-1', errors='replace'))} >>\nstream\n{stream}\nendstream")
+
+    kids = " ".join(f"{number} 0 R" for number in page_object_numbers)
+    objects[1] = f"<< /Type /Pages /Kids [{kids}] /Count {len(page_object_numbers)} >>"
+
+    pdf = ["%PDF-1.4\n"]
+    offsets = [0]
+    for index, obj in enumerate(objects, start=1):
+        offsets.append(sum(len(part.encode("latin-1", errors="replace")) for part in pdf))
+        pdf.append(f"{index} 0 obj\n{obj}\nendobj\n")
+
+    xref_offset = sum(len(part.encode("latin-1", errors="replace")) for part in pdf)
+    pdf.append(f"xref\n0 {len(objects) + 1}\n")
+    pdf.append("0000000000 65535 f \n")
+    for offset in offsets[1:]:
+        pdf.append(f"{offset:010d} 00000 n \n")
+    pdf.append(
+        "trailer\n"
+        f"<< /Size {len(objects) + 1} /Root 1 0 R >>\n"
+        "startxref\n"
+        f"{xref_offset}\n"
+        "%%EOF"
+    )
+
+    return "".join(pdf).encode("latin-1", errors="replace")
+
+
+def render_interactive_answer(question: str, final_answer: str, evaluation: dict) -> None:
+    word_count = evaluation.get("word_count", len(final_answer.split())) if isinstance(evaluation, dict) else len(final_answer.split())
+    score = evaluation.get("score", "N/A") if isinstance(evaluation, dict) else "N/A"
+    missing_sections = evaluation.get("missing_sections", []) if isinstance(evaluation, dict) else []
+    sections = split_assignment_sections(final_answer)
+
+    metric_cols = st.columns(4)
+    metric_cols[0].metric("Quality Score", score)
+    metric_cols[1].metric("Word Count", word_count)
+    metric_cols[2].metric("Sections", len(sections))
+    metric_cols[3].metric("Missing", len(missing_sections))
+
+    pdf_bytes = create_assignment_pdf(question, final_answer, evaluation)
+    st.markdown(
+        (
+            '<div class="download-report-panel">'
+            "<strong>Download report</strong>"
+            "<p>Export the generated assignment with evaluation status, score, and word count as a PDF document.</p>"
+            "</div>"
+        ),
+        unsafe_allow_html=True,
+    )
+    st.download_button(
+        "Download assignment as PDF",
+        data=pdf_bytes,
+        file_name="generated_assignment.pdf",
+        mime="application/pdf",
+        use_container_width=True,
+    )
+
+    st.markdown("### Interactive Assignment View")
+    if sections:
+        for title, body in sections:
+            with st.expander(title, expanded=title.lower() in {"overview", "introduction"}):
+                st.markdown(body)
+    else:
+        st.markdown(final_answer)
 
 
 st.set_page_config(
@@ -513,10 +862,9 @@ st.set_page_config(
     layout="wide",
 )
 
-inject_styles()
-
 with st.sidebar:
     st.markdown("## Settings")
+    theme_mode = st.radio("Theme", ["Light", "Dark"], horizontal=True)
     selected_model = st.selectbox("Model selection", ["llama3", "phi3"], index=0)
     show_logs = st.toggle("Show debug state", value=False)
     st.markdown("---")
@@ -524,6 +872,8 @@ with st.sidebar:
         "The interface shows the full multi-agent route while the existing backend runs the local Ollama pipeline."
     )
     st.caption(f"Selected UI model preference: {selected_model}")
+
+inject_styles(theme_mode)
 
 render_hero()
 render_agent_flow("ready")
@@ -593,7 +943,7 @@ if generate_btn:
 
                 with tabs[0]:
                     st.markdown("### Generated Assignment")
-                    st.markdown(final_answer)
+                    render_interactive_answer(question, final_answer, evaluation)
 
                 with tabs[1]:
                     col_status, col_feedback = st.columns([1, 3])
@@ -602,10 +952,18 @@ if generate_btn:
                             st.success(f"Status: {status}")
                         else:
                             st.warning(f"Status: {status}")
+                        if isinstance(evaluation, dict):
+                            st.metric("Score", evaluation.get("score", "N/A"))
+                            st.metric("Word Count", evaluation.get("word_count", "N/A"))
 
                     with col_feedback:
                         st.markdown("#### Evaluator Feedback")
                         st.write(feedback)
+                        missing_sections = evaluation.get("missing_sections", []) if isinstance(evaluation, dict) else []
+                        if missing_sections:
+                            st.warning(f"Missing sections: {', '.join(missing_sections)}")
+                        else:
+                            st.success("All required sections are present.")
 
                 with tabs[2]:
                     if show_logs:

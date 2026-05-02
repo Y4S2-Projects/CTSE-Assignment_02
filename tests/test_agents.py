@@ -109,18 +109,23 @@ class TestAgentBehavior(unittest.TestCase):
     ):
         state.update("question", "Explain cloud computing")
         state.update("research", "Cloud computing provides on-demand computing resources.")
-        expected_draft = (
+        short_model_draft = (
             "Introduction\nCloud computing is important.\n\n"
             "Explanation\nIt provides services over the internet.\n\n"
             "Conclusion\nCloud computing improves scalability."
         )
-        mock_llm.return_value = FakeLLM(expected_draft)
-        mock_prompt.return_value = FakePrompt(expected_draft)
+        mock_llm.return_value = FakeLLM(short_model_draft)
+        mock_prompt.return_value = FakePrompt(short_model_draft)
 
         draft = writer_agent()
 
-        self.assertEqual(draft, expected_draft)
-        self.assertEqual(state.get("draft"), expected_draft)
+        self.assertIn("Introduction", draft)
+        self.assertIn("Explanation", draft)
+        self.assertIn("Examples", draft)
+        self.assertIn("Advantages / Use cases", draft)
+        self.assertIn("Conclusion", draft)
+        self.assertGreaterEqual(len(draft.split()), 300)
+        self.assertEqual(state.get("draft"), draft)
 
     @patch("agents.evaluator.log")
     def test_evaluator_agent_requests_improvement_for_short_draft(self, _mock_log):
@@ -130,6 +135,8 @@ class TestAgentBehavior(unittest.TestCase):
 
         self.assertEqual(evaluation["status"], "Improve")
         self.assertIn("Length is too short", evaluation["feedback"])
+        self.assertLess(evaluation["score"], 100)
+        self.assertEqual(evaluation["word_count"], 5)
         self.assertEqual(state.get("evaluation"), evaluation)
 
     @patch("agents.evaluator.log")
@@ -144,6 +151,8 @@ class TestAgentBehavior(unittest.TestCase):
 
         self.assertEqual(evaluation["status"], "Good")
         self.assertIn("meets all academic requirements", evaluation["feedback"])
+        self.assertEqual(evaluation["score"], 100)
+        self.assertGreaterEqual(evaluation["word_count"], 300)
         self.assertEqual(state.get("evaluation"), evaluation)
 
 

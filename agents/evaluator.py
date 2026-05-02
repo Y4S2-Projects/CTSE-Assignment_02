@@ -9,7 +9,13 @@ def evaluator_agent() -> dict:
     
     if not draft:
         log("Evaluator", "No draft found to evaluate.")
-        result = {"status": "Improve", "feedback": "No draft generated."}
+        result = {
+            "status": "Improve",
+            "feedback": "No draft generated.",
+            "score": 0,
+            "word_count": 0,
+            "missing_sections": ["Introduction", "Conclusion"],
+        }
         state.update("evaluation", result)
         return result
         
@@ -35,10 +41,19 @@ def evaluator_agent() -> dict:
     else:
         feedback = "The draft meets all academic requirements: good length, clear structure, and includes all necessary sections."
         status = "Good"
+
+    score = 100
+    if word_count < 300:
+        score -= 40
+    score -= len(missing_sections) * 20
+    score = max(score, 0)
         
     result = {
         "status": status,
-        "feedback": feedback
+        "feedback": feedback,
+        "score": score,
+        "word_count": word_count,
+        "missing_sections": missing_sections,
     }
     
     log("Evaluator", f"Evaluation completed: Status={result['status']}")
